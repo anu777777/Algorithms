@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void reverse(int arr[], int first, int last) {
+    while (first < last) {
+        int temp = arr[first];
+        arr[first] = arr[last];
+        arr[last] = temp;
+        first++;
+        last--;
+    }
+}
+void rotatearray(int arr[], int num, int till) {
+    if (till == 0)
+      return;
+    //In case rotating factor is greater than array length
+    till = till % num;
+    reverse(arr, 0, till - 1);
+    reverse(arr, till, num - 1);
+    reverse(arr, 0, num - 1);
+}
+
+void printarray(int arr[]) {
+    for (int i = 0; i < 7; i++) {
+        cout << arr[i] << " ";
+    }
+}
+
+int main() {
+    int arr[] = {1, 2, 3, 4, 5, 6, 7};
+    rotatearray(arr, 7, 2);
+    for (int i = 0; i < 7; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    printarray(arr);
+    return 0;
+}
